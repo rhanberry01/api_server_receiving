@@ -1465,6 +1465,7 @@ class ReceivePo extends Model {
                 let order_no = await this.check_purch_orders_details(row)
                 if (order_no <= 0) {
                     delete row.stacked
+                    delete row.po_detail_item
                     await Db.connection('srs').insert(row).into('purch_order_details')
                 }
             }
